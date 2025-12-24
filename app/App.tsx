@@ -169,7 +169,7 @@ const App: React.FC = () => {
                     }}
                     className={`w-full text-left p-4 rounded-2xl transition-all duration-300 group cursor-pointer ${
                       activeNoteId === note.id
-                        ? 'bg-white shadow-xl shadow-slate-200/50 border border-slate-100'
+                        ? 'bg-white dark:glow border border-slate-100'
                         : 'hover:bg-slate-50 border border-transparent'
                     }`}
                   >
