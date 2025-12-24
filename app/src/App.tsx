@@ -15,3 +15,27 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [aiInsight, setAiInsight] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const activeNote = useMemo(() => notes.find(n => n.id === activeNoteId), [notes, activeNoteId]);
+
+  const filteredNotes = useMemo(() => {
+    let result = notes;
+    
+    if (currentView === 'archive') {
+      result = result.filter(n => n.isArchived);
+    } else {
+      result = result.filter(n => !n.isArchived);
+      if (currentView === 'pinned') {
+        result = result.filter(n => n.isPinned);
+      }
+    }
+
+    if (searchQuery) {
+      result = result.filter(n => 
+        n.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        n.content.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    return result.sort((a, b) => b.updatedAt - a.updatedAt);
+  }, [notes, currentView, searchQuery]);
