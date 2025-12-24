@@ -39,3 +39,21 @@ const App: React.FC = () => {
 
     return result.sort((a, b) => b.updatedAt - a.updatedAt);
   }, [notes, currentView, searchQuery]);
+
+  const handleNewNote = () => {
+    const newNote: Note = {
+      id: Date.now().toString(),
+      title: '',
+      content: '',
+      isPinned: false,
+      isArchived: false,
+      updatedAt: Date.now(),
+    };
+    setNotes([newNote, ...notes]);
+    setActiveNoteId(newNote.id);
+    setCurrentView('all');
+  };
+
+  const handleSaveNote = (updatedNote: Note) => {
+    setNotes(prev => prev.map(n => n.id === updatedNote.id ? updatedNote : n));
+  };
