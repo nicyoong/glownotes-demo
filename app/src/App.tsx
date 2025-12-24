@@ -75,3 +75,10 @@ const App: React.FC = () => {
   const handleDeleteAction = (id: string) => {
     setActions(prev => prev.filter(a => a.id !== id));
   };
+
+  const triggerAiInsight = async () => {
+    if (!activeNote?.content) return;
+    setAiInsight('Thinking...');
+    const insight = await summarizeNote(activeNote.content);
+    setAiInsight(insight);
+  };
