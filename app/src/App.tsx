@@ -57,3 +57,21 @@ const App: React.FC = () => {
   const handleSaveNote = (updatedNote: Note) => {
     setNotes(prev => prev.map(n => n.id === updatedNote.id ? updatedNote : n));
   };
+
+  const handleCreateAction = (actionData: Omit<Action, 'id' | 'createdAt' | 'completed'>) => {
+    const newAction: Action = {
+      ...actionData,
+      id: `a-${Date.now()}`,
+      createdAt: Date.now(),
+      completed: false
+    };
+    setActions([newAction, ...actions]);
+  };
+
+  const handleToggleAction = (id: string) => {
+    setActions(prev => prev.map(a => a.id === id ? { ...a, completed: !a.completed } : a));
+  };
+
+  const handleDeleteAction = (id: string) => {
+    setActions(prev => prev.filter(a => a.id !== id));
+  };
