@@ -1,0 +1,138 @@
+/* Base colors */
+html {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+html.dark {
+  background-color: #0f1115;
+  color: #e5e7eb;
+}
+
+/* App containers */
+.dark .bg-white {
+  background-color: #151821;
+}
+
+.dark .bg-\[\#FDFCFB\] {
+  background-color: #151821;
+}
+
+/* Text tweaks */
+.dark .text-slate-900 {
+  color: #f1f5f9;
+}
+
+.dark .text-slate-700 {
+  color: #cbd5e1;
+}
+
+.dark .text-slate-500 {
+  color: #94a3b8;
+}
+
+.dark .text-slate-400 {
+  color: #64748b;
+}
+
+/* Borders */
+.dark .border-slate-100 {
+  border-color: #1f2933;
+}
+
+.dark .border-slate-200 {
+  border-color: #27303f;
+}
+
+/* Inputs */
+.dark input,
+.dark textarea {
+  background-color: transparent;
+  color: #e5e7eb;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b;
+}
+
+/* Soft transitions (Glow feel ✨) */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .bg-\[\#FDFCFB\]\/50 {
+  background-color: #1d2e50;
+}
+
+.dark .bg-slate-100\/50 {
+  background-color: #1d2e50;
+}
+
+.dark .border-slate-100 {
+  border-color: #1e293b;
+}
+
+.dark .shadow-sm,
+.dark .shadow,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  box-shadow: none;
+}
+
+.dark .glow {
+  box-shadow:
+    0 0 0 1px rgba(120, 160, 255, 0.08),
+    0 0 24px rgba(80, 120, 255, 0.12);
+}
+
+.dark .glow-active {
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.25),
+    0 0 32px rgba(251, 191, 36, 0.35),
+    0 0 64px rgba(251, 191, 36, 0.15);
+}
+
+.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(80, 120, 255, 0.06),
+      transparent 70%
+    );
+}
+
+.glow-ambient {
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.15),
+    0 0 18px rgba(251, 191, 36, 0.25);
+}
+
+.dark .glow-ambient {
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.18),
+    0 0 24px rgba(251, 191, 36, 0.18);
+}
+
+@keyframes glow-breathe {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(251, 191, 36, 0.14),
+      0 0 18px rgba(251, 191, 36, 0.22);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(251, 191, 36, 0.18),
+      0 0 24px rgba(251, 191, 36, 0.3);
+  }
+}
+
+.glow-breathe {
+  animation: glow-breathe 6s ease-in-out infinite;
+}

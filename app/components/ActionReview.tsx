@@ -22,7 +22,7 @@ export const ActionReview: React.FC<ActionReviewProps> = ({
 
   // Fix: Explicitly type ActionCard as React.FC to allow React's special 'key' prop when rendering in lists
   const ActionCard: React.FC<{ action: Action }> = ({ action }) => (
-    <div className="group flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-xl hover:shadow-amber-100/30 transition-all duration-300">
+    <div className="group flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 hover:border-amber-200 dark:glow transition-all duration-300">
       <button 
         onClick={() => onToggleAction(action.id)}
         className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${

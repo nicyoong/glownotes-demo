@@ -7,9 +7,11 @@ interface SidebarProps {
   onViewChange: (view: ViewType) => void;
   onNewNote: () => void;
   isOpen: boolean;
+  isDarkMode: boolean;
+  onToggleDarkMode: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange, onNewNote, isOpen }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange, onNewNote, isOpen, isDarkMode, onToggleDarkMode }) => {
   const navItems = [
     { id: 'all' as ViewType, label: 'All Notes', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
     { id: 'pinned' as ViewType, label: 'Pinned', icon: 'M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z' },
@@ -56,12 +58,22 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange, onN
       <div className="p-4 border-t border-slate-100">
         <button
           onClick={onNewNote}
-          className="w-full flex items-center justify-center gap-2 bg-slate-900 text-white py-3 rounded-xl font-medium shadow-lg shadow-slate-200 hover:bg-slate-800 transition-all hover:-translate-y-0.5"
+          className="w-full flex items-center justify-center gap-2 bg-slate-900 text-white py-3 rounded-xl font-medium glow-ambient shadow-slate-200 hover:bg-slate-800 transition-all hover:-translate-y-0.5"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
           New Note
+        </button>
+        <button
+          onClick={onToggleDarkMode}
+          className="mt-3 w-full flex items-center justify-center gap-2
+                    py-2 rounded-xl text-sm font-medium
+                    bg-slate-100 text-slate-700
+                    hover:bg-slate-200
+                    transition-all"
+        >
+          {isDarkMode ? 'Moonlight' : 'Daylight'}
         </button>
       </div>
     </aside>
