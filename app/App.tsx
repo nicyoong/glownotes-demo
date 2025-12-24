@@ -101,18 +101,20 @@ const App: React.FC = () => {
 
   return (
     <div className="flex h-screen w-full overflow-hidden text-slate-900">
-      <Sidebar 
-        currentView={currentView} 
-        onViewChange={(v) => { 
-          setCurrentView(v); 
+      <Sidebar
+        currentView={currentView}
+        onViewChange={(v) => {
+          setCurrentView(v);
           if (v === 'actions') setActiveNoteId(null);
-          setIsSidebarOpen(false); // 👈 auto-close on mobile
-        }} 
+          setIsSidebarOpen(false);
+        }}
         onNewNote={() => {
           handleNewNote();
-          setIsSidebarOpen(false); // 👈 auto-close
+          setIsSidebarOpen(false);
         }}
         isOpen={isSidebarOpen}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode(prev => !prev)}
       />
 
       <button

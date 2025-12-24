@@ -7,6 +7,8 @@ interface SidebarProps {
   onViewChange: (view: ViewType) => void;
   onNewNote: () => void;
   isOpen: boolean;
+  isDarkMode: boolean;
+  onToggleDarkMode: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange, onNewNote, isOpen }) => {
