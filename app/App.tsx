@@ -155,7 +155,7 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-2">
+              <div className="flex-1 overflow-y-auto px-4 pt-6 pb-6 space-y-3">
                 {filteredNotes.map(note => (
                   <div
                     key={note.id}
