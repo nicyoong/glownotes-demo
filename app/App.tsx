@@ -118,7 +118,7 @@ const App: React.FC = () => {
       />
 
       <button
-        className="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded-xl shadow-lg border"
+        className="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded-xl glow-ambient border"
         onClick={() => setIsSidebarOpen(prev => !prev)}
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +169,7 @@ const App: React.FC = () => {
                     }}
                     className={`w-full text-left p-4 rounded-2xl transition-all duration-300 group cursor-pointer ${
                       activeNoteId === note.id
-                        ? 'bg-white dark:glow border border-slate-100'
+                        ? 'bg-white dark:glow glow-ambient border border-slate-100'
                         : 'hover:bg-slate-50 border border-transparent'
                     }`}
                   >
@@ -251,7 +251,7 @@ const App: React.FC = () => {
                       )}
                       <button 
                         onClick={triggerAiInsight}
-                        className="w-14 h-14 bg-amber-400 rounded-full flex items-center justify-center text-amber-900 shadow-xl shadow-amber-200 hover:scale-110 active:scale-90 transition-all group"
+                        className="w-14 h-14 bg-amber-400 rounded-full flex items-center justify-center text-amber-900 glow-ambient shadow-amber-200 hover:scale-110 active:scale-90 transition-all group"
                       >
                         <svg className="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />

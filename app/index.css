@@ -107,3 +107,32 @@ html.dark {
       transparent 70%
     );
 }
+
+.glow-ambient {
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.15),
+    0 0 18px rgba(251, 191, 36, 0.25);
+}
+
+.dark .glow-ambient {
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.18),
+    0 0 24px rgba(251, 191, 36, 0.18);
+}
+
+@keyframes glow-breathe {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(251, 191, 36, 0.14),
+      0 0 18px rgba(251, 191, 36, 0.22);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(251, 191, 36, 0.18),
+      0 0 24px rgba(251, 191, 36, 0.3);
+  }
+}
+
+.glow-breathe {
+  animation: glow-breathe 6s ease-in-out infinite;
+}
