@@ -1,0 +1,8 @@
+{
+  "name": "Glow Notes",
+  "description": "A beautiful, AI-powered notes app where sentences turn into gentle actions. Features a focus-driven editor, action highlights, and intelligent summaries.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

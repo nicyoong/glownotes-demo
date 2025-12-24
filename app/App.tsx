@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Editor } from './components/Editor';
@@ -139,59 +140,60 @@ const App: React.FC = () => {
 
               <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-2">
                 {filteredNotes.map(note => (
-                  <button
+                  <div
                     key={note.id}
+                    role="button"
+                    tabIndex={0}
                     onClick={() => setActiveNoteId(note.id)}
-                    className={`w-full text-left p-4 rounded-2xl transition-all duration-300 group ${
-                      activeNoteId === note.id 
-                        ? 'bg-white shadow-xl shadow-slate-200/50 border border-slate-100' 
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setActiveNoteId(note.id);
+                      }
+                    }}
+                    className={`w-full text-left p-4 rounded-2xl transition-all duration-300 group cursor-pointer ${
+                      activeNoteId === note.id
+                        ? 'bg-white shadow-xl shadow-slate-200/50 border border-slate-100'
                         : 'hover:bg-slate-50 border border-transparent'
                     }`}
                   >
                     <div className="flex justify-between items-start mb-1">
-                      <h3 className={`font-semibold truncate pr-4 ${!note.title ? 'text-slate-300 italic' : 'text-slate-700'}`}>
+                      <h3 className="font-semibold truncate pr-4">
                         {note.title || 'Untitled'}
                       </h3>
-                      {note.isPinned && (
-                        <svg className="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                        </svg>
-                      )}
                     </div>
-                    <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed">
+
+                    <p className="text-sm text-slate-400 line-clamp-2">
                       {note.content || 'No content yet...'}
                     </p>
+
                     <div className="mt-3 flex items-center justify-between">
-                      <span className="text-[10px] text-slate-300 uppercase font-bold tracking-tighter">
+                      <span className="text-[10px] text-slate-300 uppercase font-bold">
                         {new Date(note.updatedAt).toLocaleDateString()}
                       </span>
-                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <button 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleSaveNote({...note, isPinned: !note.isPinned});
-                            }}
-                            className="p-1 hover:text-amber-500 text-slate-300"
-                          >
-                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                            </svg>
-                          </button>
-                          <button 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleSaveNote({...note, isArchived: !note.isArchived});
-                              if (activeNoteId === note.id) setActiveNoteId(null);
-                            }}
-                            className="p-1 hover:text-indigo-500 text-slate-300"
-                          >
-                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                            </svg>
-                          </button>
+
+                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSaveNote({ ...note, isPinned: !note.isPinned });
+                          }}
+                          className="p-1 hover:text-amber-500 text-slate-300"
+                        >
+                          📌
+                        </button>
+
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSaveNote({ ...note, isArchived: !note.isArchived });
+                          }}
+                          className="p-1 hover:text-indigo-500 text-slate-300"
+                        >
+                          🗄
+                        </button>
                       </div>
                     </div>
-                  </button>
+                  </div>
                 ))}
                 {filteredNotes.length === 0 && (
                   <div className="text-center py-20 px-4">
