@@ -65,6 +65,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange, onN
           </svg>
           New Note
         </button>
+        <button
+          onClick={onToggleDarkMode}
+          className="mt-3 w-full flex items-center justify-center gap-2
+                    py-2 rounded-xl text-sm font-medium
+                    bg-slate-100 text-slate-700
+                    hover:bg-slate-200
+                    transition-all"
+        >
+          {isDarkMode ? 'Moonlight' : 'Daylight'}
+        </button>
       </div>
     </aside>
   );
