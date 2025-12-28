@@ -194,9 +194,26 @@ const App: React.FC = () => {
                             e.stopPropagation();
                             handleSaveNote({ ...note, isPinned: !note.isPinned });
                           }}
-                          className="p-1 hover:text-amber-500 text-slate-300"
+                          className={`p-1 transition-colors ${
+                            note.isPinned
+                              ? 'text-amber-500'
+                              : 'text-slate-300 hover:text-amber-500'
+                          }`}
+                          aria-label="Pin note"
                         >
-                          📌
+                          <svg
+                            className="w-4 h-4"
+                            fill={note.isPinned ? 'currentColor' : 'none'}
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M16 3l5 5-4 4v4l-2 2-2-2v-4l-4-4 5-5z"
+                            />
+                          </svg>
                         </button>
 
                         <button
